@@ -1,0 +1,21 @@
+# conda 环境定义（可选；也可以用 venv + pip）
+#
+#   conda env create -f environment.yml
+#   conda activate learn-cordis
+#   pip install -e .          # 可选：让 import cordis 在任意目录可用
+#   python -m pytest -q
+#
+# 说明：
+# - 本项目运行时只依赖 PyYAML，开发依赖只有 pytest，全部是纯 Python/wheel，
+#   conda 用默认渠道（defaults）即可，无需编译工具链。
+# - 这里固定 python=3.13：项目要求 >=3.11，固定次新版本能让 conda 的经典求解器
+#   快很多（版本范围越大求解越慢，conda-forge 渠道实测几分钟起步）。
+#   想用 conda-forge 或国内镜像，把 channels 换掉即可，见 docs/environment.md。
+name: learn-cordis
+channels:
+  - defaults
+dependencies:
+  - python=3.13
+  - pyyaml>=6.0
+  - pytest>=8.0
+  - pip

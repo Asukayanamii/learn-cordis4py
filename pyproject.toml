@@ -7,7 +7,7 @@ name = "cordis-py"
 version = "0.1.0"
 description = "Cordis 框架的 Python 复刻版：插件、上下文、服务依赖注入、事件分发与生命周期管理"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 dependencies = [
     "PyYAML>=6.0",

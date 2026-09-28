@@ -83,6 +83,26 @@ ctx.effect(lambda: contextmanager_instance)
 
 ## 前置知识
 
-- Python 3.10+；会写 `async/await`；
+- Python **3.11+**；会写 `async/await`；
 - 用过装饰器、上下文管理器（`with`）、生成器；
 - 不要求读过 TypeScript 版 Cordis——所有 TS 概念都会对照解释。
+
+## 准备环境
+
+运行时只依赖 PyYAML，开发只依赖 pytest（详见 [依赖与环境说明](../environment.md)）：
+
+```bash
+# 方式一：venv + pip
+python -m venv .venv
+.venv\Scripts\Activate.ps1                       # Linux / macOS: source .venv/bin/activate
+python -m pip install -e ".[dev]"                # 本体 + pytest
+
+# 方式二：conda（仓库自带 environment.yml）
+conda env create -f environment.yml
+conda activate learn-cordis
+
+python -m pytest -q        # 75 个测试，全绿说明环境就绪
+```
+
+只想马上跑教程、暂时不装包也行：在仓库根目录直接 `python tutorial/ch01_context.py`
+（第 1–5 章零第三方依赖；第 6 章和 `examples/agent` 需要 `pip install pyyaml`）。

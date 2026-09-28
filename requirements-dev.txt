@@ -1,0 +1,6 @@
+# 开发依赖（第三方）：在 IDE 里点 "Install requirements" 即可
+#
+#   python -m pip install -r requirements-dev.txt && python -m pytest -q
+
+-r requirements.txt
+pytest>=8.0

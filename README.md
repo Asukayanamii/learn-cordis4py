@@ -30,6 +30,32 @@ python examples/agent/run.py "读取 pyproject.toml 并总结"   # 智能体跑�
 python examples/agent/run.py                    # 交互式 REPL
 ```
 
+<details>
+<summary>用 conda 管理环境（可选，另见 <a href="docs/environment.md">依赖与环境说明</a>）</summary>
+
+需要 **Python ≥ 3.11**（conda 的 base 若是 3.9 不能跑本项目）。仓库自带 `environment.yml`：
+
+```bash
+conda env create -f environment.yml     # 创建名为 learn-cordis 的环境
+conda activate learn-cordis
+python -m pytest -q                     # 75 个测试
+python examples/agent/run.py "列出目录"
+```
+
+也可以手动两步走（更快，避开旧版 conda 的慢求解）：
+
+```bash
+conda create -n learn-cordis python=3.13 -y
+conda activate learn-cordis
+python -m pip install -e ".[dev]"       # 本体 + 开发依赖（pytest）
+```
+
+删掉环境：`conda env remove -n learn-cordis`。
+国内网络、IDE（PyCharm / VS Code）配置、conda 求解慢的原因，都写在
+[`docs/environment.md`](docs/environment.md)。
+
+</details>
+
 智能体示例的输出（mock 模型 → 工具调用 → 汇总，全程确定性）：
 
 ```text
@@ -108,8 +134,11 @@ tutorial/                从零构建教程（每章一个可直接运行的文�
 └── ch07_agent.py        用框架搭一个微型智能体核心
 
 docs/tutorial/           教程正文（配套上面每一章）
+docs/environment.md      依赖清单与环境配置（conda / venv / IDE / 国内镜像）
 examples/                示例：01–05 基础、06 装载器、agent 智能体核心
-tests/                   75 个 pytest 用例（语义即规格）
+tests/                   75 个 pytest 用例（语义即规格；只依赖 pytest）
+environment.yml          conda 环境定义（可选）
+requirements*.txt        给 IDE / pip 用户的依赖清单
 ```
 
 ---

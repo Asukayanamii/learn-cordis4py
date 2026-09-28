@@ -1,0 +1,8 @@
+# 运行时依赖（第三方）
+#
+# 等价于 `pip install -e .`（pyproject.toml 里的 [project].dependencies 是权威来源）。
+# 不装 PyYAML 也能用框架本体，只有 cordis.loader（读 cordis.yml）需要它：
+#   - 需要：examples/06_loader、examples/agent、tutorial/ch06_loader.py
+#   - 不需要：cordis 核心、examples/01-05、tutorial/ch01-ch05、ch07（ch07 不读 YAML）
+
+PyYAML>=6.0
