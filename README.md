@@ -18,7 +18,8 @@
 ## 60 秒上手
 
 ```bash
-git clone <this-repo> && cd learn-cordis
+git clone https://github.com/Asukayanamii/learn-cordis4py.git
+cd learn-cordis4py
 python -m pip install -e .          # 运行时只依赖 PyYAML
 python -m pytest -q                 # 75 个测试
 
