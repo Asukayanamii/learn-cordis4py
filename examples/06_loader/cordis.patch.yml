@@ -1,0 +1,4 @@
+# 叠加层（patch）：按 id 定位条目，替换其整个 config
+- id: greeter
+  config:
+    greeting: 你好

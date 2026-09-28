@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cordis-py"
+version = "0.1.0"
+description = "Cordis 框架的 Python 复刻版：插件、上下文、服务依赖注入、事件分发与生命周期管理"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["cordis*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

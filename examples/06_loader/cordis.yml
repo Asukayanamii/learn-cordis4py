@@ -1,0 +1,7 @@
+- id: greeter
+  name: ./plugins/greeter.py
+  config:
+    greeting: Hello
+
+- id: consumer
+  name: ./plugins/consumer.py

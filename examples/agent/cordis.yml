@@ -1,0 +1,66 @@
+# 智能体核心：一棵插件树描述整个应用（"万物皆插件"）
+#
+# 依赖关系决定加载顺序：loader 并发启动所有条目，
+# 声明了 inject 的插件会等到依赖服务就绪后才真正运行。
+
+# ---- 基础设施：提示词 / 会话日志 / 工具 -------------------------------------------------
+- id: systemPrompt
+  name: ./plugins/system_prompt.py
+  config:
+    base: |
+      你是一个运行在 cordis-py 上的智能体。
+      你可以调用工具完成任务；工具调用由框架负责执行并把结果回填给你。
+
+- id: persona
+  name: ./plugins/persona.py
+  config:
+    max_tokens: 2048
+
+- id: sessions
+  name: ./plugins/sessions.py
+  config:
+    directory: ${baseDir}/sessions      # ${baseDir} = 配置文件所在目录（不随启动目录变）
+
+- id: tools
+  name: ./plugins/tools.py
+
+- id: tools-builtin
+  name: ./plugins/tools_builtin.py
+  config:
+    workspace: ${baseDir}/../..         # 工具的工作目录：仓库根目录
+
+# ---- 策略：审批 / 脱敏 / 输入把关 -------------------------------------------------------
+- id: approval
+  name: ./plugins/approval.py
+  config:
+    deny: []
+    allow: []
+    allow_dangerous: false
+    forbid: ['rm -rf /']
+
+# ---- 模型：适配器可替换（mock → deepseek）---------------------------------------------
+- id: llm
+  name: ./plugins/llm.py
+  config:
+    provider: mock
+    model: mock-1
+
+- id: llm-mock
+  name: ./plugins/llm_mock.py
+  config:
+    max_steps: 3
+
+# ---- 核心：agent 循环 -------------------------------------------------------------------
+- id: agents
+  name: ./plugins/agent.py
+  config:
+    max_steps: 4
+
+# ---- 观察与交互 -------------------------------------------------------------------------
+- id: telemetry
+  name: ./plugins/telemetry.py
+  config:
+    print: true
+
+- id: cli
+  name: ./plugins/cli.py

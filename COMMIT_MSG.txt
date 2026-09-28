@@ -1,0 +1,8 @@
+初始化：Cordis 框架的 Python 复刻 + 从零构建教程 + 智能体核心示例
+
+- cordis/：上下文与作用域、fiber 生命周期与 effect、五种事件分发、
+  服务依赖注入与调用方绑定、Schema 配置校验、YAML 装载器（patch 叠加层 + 热重载）
+- tutorial/：七章从零构建的可运行代码（ch01-ch07），docs/tutorial/ 为配套教程正文
+- examples/：基础示例 01-05、装载器示例 06、配置驱动的智能体核心
+  （工具流水线、审批策略、会话日志、可替换模型适配器、CLI）
+- tests/：75 个 pytest 用例，覆盖上下文、fiber、事件、注册表、Schema、装载器与智能体
